@@ -6,14 +6,16 @@
 
 #include <Arduino.h>
 
-#include "lib/debug/Debug.h"
+
 #include "lib/Macros.h"
 #include "lib/Constants.h"
+
 
 #include "Constants.h"
 #include "../Config.h"
 #include "Config.defaults.h"
 #include "HAL/HAL.h"
+#include "lib/debug/Debug.h"
 
 #include "pinmaps/Models.h"
 

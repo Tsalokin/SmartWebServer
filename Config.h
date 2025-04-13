@@ -25,17 +25,17 @@
 // =================================================================================================================================
 // CONTROLLER ======================================================================================================================
 
-#define HOST_NAME            "OnStep-SWS" // p-SWS", This devices name up to 16 chars (collapses to mDNS name "onstepsws".)   Adjust
+#define HOST_NAME             "nvaonstep" // p-SWS", This devices name up to 16 chars (collapses to mDNS name "onstepsws".)   Adjust
 
 // OPERATIONAL MODE ----------------------------------------------------------------------------------------------------------------
 #define OPERATIONAL_MODE             WIFI //   WIFI, Or use ETHERNET_W5100 or ETHERNET_W5500                                 <-Req'd
 
 // SERIAL PORTS --------------------------------------------------------------------------------------------------------------------
-#define SERIAL_BAUD_DEFAULT          9600 //   9600, Common baud rates for this parameter are 9600,19200,57600,115200,etc.    Infreq
+#define SERIAL_BAUD_DEFAULT        115200 //   9600, Common baud rates for this parameter are 9600,19200,57600,115200,etc.    Infreq
                                           //         The OnStep serial port this is wired to must use the same rate above.
 #define SERIAL_BAUD                115200 // 115200, Or use 19200,57600,115200,230400,460800 (not all devices support > 115200)
                                           //         (OnStep and here.)  Automatically uses 19200 if talking to a Mega2560 OnStep.
-#define SERIAL_SWAP                  AUTO //   AUTO, Automatic check both, ON for swapped port or OFF for default port only.  Infreq
+#define SERIAL_SWAP                    ON //   AUTO, Automatic check both, ON for swapped port or OFF for default port only.  Infreq
                                           //         this option is ignored in ETHERNET modes
 
 // BLE GAMEPAD SETTINGS (ESP32 ONLY) ------------------------------------------------ see https://onstep.groups.io/g/main/wiki/26762
@@ -81,4 +81,54 @@
 
 // THAT'S IT FOR USER CONFIGURATION!
 // -------------------------------------------------------------------------------
-#include "Extended.config.h"
+// ---------------------------------------------------------------------------------------------------------------------------------
+// Extended configuration for OnStep SmartWebServer infrequently used options
+
+//                                 *** Most users will not change anything in this file! ***
+
+// ---------------------------------------------------------------------------------------------------------------------------------
+// ADJUST THE FOLLOWING TO CONFIGURE YOUR CONTROLLER FEATURES ----------------------------------------------------------------------
+// <-Req'd = always must set, <-Often = usually must set, Option = optional, Adjust = adjust as req'd, Infreq = infrequently changed
+
+// DEBUG ------------------------------------------------------------ see https://onstep.groups.io/g/main/wiki/6-Configuration#DEBUG
+// Enable additional debugging and/or status messages on the specified SERIAL_DEBUG port
+// Note that the SERIAL_DEBUG port cannot be used for normal communication with OnStep
+
+//      Parameter Name              Value        Default  Notes                                                                 Hint
+#define DEBUG                     VERBOSE //         OFF, Use ON for background error messages only, use VERBOSE for all      Infreq
+                                          //              error and status messages, use PROFILER for VT100 task profiler,
+                                          //              use REMOTE to forward verbose debug output to OnStep
+#define SERIAL_DEBUG               Serial //      Serial, Or use any h/w serial port. Serial1 or Serial2, etc. as supported.  Option
+#define SERIAL_DEBUG_BAUD          115200 //        9600, n. Where n=9600,19200,57600,115200 (common baud rates.)             Option
+
+// NON-VOLATILE STORAGE ------------------------------------------------------------------------------------------------------------
+#define NV_WIPE                       OFF //         OFF, Causes the defaults to be written back into NV (FLASH,EEPROM,etc.)  Infreq
+                                          //              ***     IMPORTANT: ENABLE THIS OPTION THEN UPLOAD, WAIT A MINUTE    ***
+// Warning --->                           //              ***     OR TWO THEN SET THIS OPTION TO OFF AND UPLOAD AGAIN.        ***
+                                          //              ***     LEAVING THIS OPTION ENABLED CAN CAUSE EXCESSIVE NV          ***
+                                          //              ***     WEAR AND DAMAGE THE MICROCONTROLLER NV SUBSYSTEM !!!        ***
+
+// NETWORK SETTINGS ----------------------------------------------------------------------------------------------------------------
+
+//        ***    These settings are stored in NV (EEPROM) and the SWS will not recognize setting changes below        ***
+//        ***    except on the first upload or when NV is wiped, these settings can be changed at runtime however.    ***
+
+#define PASSWORD_DEFAULT       "password" //  "password", For access to these settings, this can be changed at runtime also.  Adjust
+
+#define AP_ENABLED                  false //        true, Wifi Access Point Enabled.                                          Adjust
+#define AP_SSID                  "ONSTEP" //    "ONSTEP", Wifi Access Point SSID.                                             Adjust
+#define AP_PASSWORD            "password" //  "password", Wifi Access Point password.                                         Adjust
+#define AP_CHANNEL                      7 //           7, Wifi Access Point channel.                                          Adjust
+#define AP_IP_ADDR            {10,0,1,55} // ..,168,0,1}, Wifi Access Point IP Address.                                       Adjust
+#define AP_GW_ADDR            {10,0,1,55} // ..,168,0,1}, Wifi Access Point GATEWAY Address.                                  Adjust
+#define AP_SN_MASK        {255,255,255,0} // ..55,255,0}, Wifi Access Point SUBNET Mask.                                      Adjust
+
+#define STA_ENABLED                  true //       false, Wifi Station Enabled.                                               Adjust
+#define STA_SSID                  "Sauce" //      "Home", Wifi Station SSID to connnect to.                                   Adjust
+#define STA_PASSWORD "BrownWhiteRedClear" //  "password", Wifi Station mode password.                                         Adjust
+#define STA_DHCP_ENABLED             true //       false, Wifi Station/Ethernet DHCP Enabled.                                 Adjust
+#define STA_IP_ADDR           {10,0,1,55} // ..168,1,55}, Wifi Station/Ethernet IP Address.                                   Adjust
+#define STA_GW_ADDR            {10,0,1,1} // ..,168,1,1}, Wifi Station/Ethernet GATEWAY Address.                              Adjust
+#define STA_SN_MASK       {255,255,255,0} // ..55,255,0}, Wifi Station/Ethernet SUBNET Mask.                                  Adjust
+
+#define MAC {0xDE,0xAD,0xBE,0xEF,0xFE,0xEE} // ..E,0xEE}, Ethernet unique MAC address.                                        Adjust

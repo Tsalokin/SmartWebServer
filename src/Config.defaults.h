@@ -17,7 +17,7 @@
 #endif
 
 #ifndef LED_STATUS_ON_STATE
-#define LED_STATUS_ON_STATE            LOW       // use HIGH so indicator stays on when connected as needed
+#define LED_STATUS_ON_STATE            HIGH      // use HIGH so indicator stays on when connected as needed
 #endif
 
 // display
