@@ -25,6 +25,8 @@
 // =================================================================================================================================
 // CONTROLLER ======================================================================================================================
 
+#include "secrets.h"
+
 #define HOST_NAME             "nvaonstep" // p-SWS", This devices name up to 16 chars (collapses to mDNS name "onstepsws".)   Adjust
 
 // OPERATIONAL MODE ----------------------------------------------------------------------------------------------------------------
@@ -124,8 +126,8 @@
 #define AP_SN_MASK        {255,255,255,0} // ..55,255,0}, Wifi Access Point SUBNET Mask.                                      Adjust
 
 #define STA_ENABLED                  true //       false, Wifi Station Enabled.                                               Adjust
-#define STA_SSID                  "Sauce" //      "Home", Wifi Station SSID to connnect to.                                   Adjust
-#define STA_PASSWORD "BrownWhiteRedClear" //  "password", Wifi Station mode password.                                         Adjust
+#define STA_SSID                WIFI_SSID //      "Home", Wifi Station SSID to connnect to.                                   Adjust
+#define STA_PASSWORD        WIFI_PASSWORD //  "password", Wifi Station mode password.                                         Adjust
 #define STA_DHCP_ENABLED             true //       false, Wifi Station/Ethernet DHCP Enabled.                                 Adjust
 #define STA_IP_ADDR           {10,0,1,55} // ..168,1,55}, Wifi Station/Ethernet IP Address.                                   Adjust
 #define STA_GW_ADDR            {10,0,1,1} // ..,168,1,1}, Wifi Station/Ethernet GATEWAY Address.                              Adjust
