@@ -5,19 +5,26 @@
 #ifdef HAS_BISS_C
 
 // get device ready for use
-void Bissc::init() {
-  if (ready) { VF("WRN: Encoder BiSS-C"); V(axis); VLF(" init(), already initialized!"); return; }
+bool Bissc::init() {
+  if (ready) return true;
 
   pinMode(maPin, OUTPUT);
   digitalWriteF(maPin, LOW);
   pinMode(sloPin, INPUT_PULLUP);
 
+  // see if the encoder is there
+  uint32_t count;
+  if (!readEnc(count))
+    if (!readEnc(count))
+      if (!readEnc(count)) return false;
+
   ready = true;
+  return true;
 }
 
 // set encoder origin
 void Bissc::setOrigin(uint32_t count) {
-  if (!ready) { VF("WRN: Encoder BiSS-C"); V(axis); VLF(" setOrigin(), not initialized!"); return; }
+  if (!ready) { DF("WRN: Encoder BiSS-C"); D(axis); DLF(" setOrigin(), failed"); return; }
 
   long temp = offset;
   offset = 0;

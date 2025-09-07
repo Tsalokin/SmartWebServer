@@ -7,7 +7,8 @@
     AXIS7_ENCODER != OFF || AXIS8_ENCODER != OFF || AXIS9_ENCODER != OFF
 
 // get device ready for use
-void Encoder::init() {
+bool Encoder::init() {
+  return true;
 }
 
 // set encoder origin
@@ -42,7 +43,7 @@ bool Encoder::errorThresholdExceeded() {
 
   if (errorState != lastErrorState) {
     if (errorState) {
-      VF("WRN: Encoder"); V(axis); VF(" error, exceeded threshold/minute at "); VL(errorCount);
+      DF("WRN: Encoder"); D(axis); DF(" error, exceeded threshold/minute at "); DL(errorCount);
     } else {
       VF("MSG: Encoder"); V(axis); VF(" error, cleared");
     }

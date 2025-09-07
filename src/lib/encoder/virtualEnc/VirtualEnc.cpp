@@ -61,8 +61,8 @@ VirtualEnc::VirtualEnc(int16_t axis) {
   isVirtual = true;
 }
 
-void VirtualEnc::init() {
-  if (ready) { VF("WRN: Encoder Virtual"); V(axis); VLF(" init(), already initialized!"); return; }
+bool VirtualEnc::init() {
+  if (ready) return true;
 
   #if AXIS1_ENCODER == VIRTUAL
     if (axis == 0) {
@@ -111,6 +111,7 @@ void VirtualEnc::init() {
   #endif
 
   ready = true;
+  return true;
 }
 
 int32_t VirtualEnc::read() {
@@ -134,7 +135,7 @@ void VirtualEnc::write(int32_t count) {
 }
 
 void VirtualEnc::setVelocity(float countsPerSec) {
-  if (!ready) { VF("WRN: Encoder Virtual"); V(axis); VLF(" setVelocity(), not ready!"); return; }
+  if (!ready) { DF("WRN: Encoder Virtual"); D(axis); DLF(" setVelocity(), not ready!"); return; }
   _increment[axis] = (countsPerSec)*(timerRateMs/1000.0F);
 }
 
