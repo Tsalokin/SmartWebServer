@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------------
-// Locale English (default,) ISO ISO639-1 language code "en"
+// Locale Spanish, ISO ISO639-1 language code "es"
 #pragma once
 
 // General
@@ -28,8 +28,9 @@
 #define L_OFF "Off"
 #define L_START "Iniciar"
 #define L_DELTA "Delta"
-#define L_ZERO "Zero"
-#define L_SPAN "Span"
+#define L_DP_MSG  "Rel."
+#define L_DP_ZERO "Máx. pot. bajo"
+#define L_DP_SPAN "Apaga sobre"
 #define L_POWER "Pwr"
 #define L_GUIDE "Guiar"
 #define L_CENTER "Centrar"
@@ -175,7 +176,7 @@
 #define L_HINT_CLOCK "Establecer fecha/hora"
 #define L_HINT_CONTINUE_GOTO "Continuar GoTo (cuando está en pausa en posición de Inicio)"
 #define L_HOME_PARK_TITLE "Localización y Posición de Inicio"
-#define L_FIND_HOME "Buscar Posición de Inicio"
+#define L_RETURN_HOME "Buscar Posición de Inicio"
 #define L_RESET_HOME "Posición de Inicio (Resetear)"
 #define L_UNPARK "Desestacionar"
 #define L_PARK "Estacionar"

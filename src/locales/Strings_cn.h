@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------------
-// Locale Chinese ISO ISO639-1 language code "cn"
+// Locale Chinese, ISO ISO639-1 language code "cn"
 #pragma once
 
 // General
@@ -28,8 +28,9 @@
 #define L_OFF "关"
 #define L_START "开始"
 #define L_DELTA "对冲值"
-#define L_ZERO "零"
-#define L_SPAN "跨度"
+#define L_DP_MSG  "相对"
+#define L_DP_ZERO "低于则全功率"
+#define L_DP_SPAN "高于则关闭"
 #define L_POWER "功率"
 #define L_GUIDE "引导"
 #define L_CENTER "居中"
@@ -175,7 +176,7 @@
 #define L_HINT_CLOCK "设置日期/时间"
 #define L_HINT_CONTINUE_GOTO "继续转到（如果在原位）"
 #define L_HOME_PARK_TITLE "归巢和停车"
-#define L_FIND_HOME "搜索起始位置"
+#define L_RETURN_HOME "搜索起始位置"
 #define L_RESET_HOME "原始位置（重置）"
 #define L_UNPARK "取消停车"
 #define L_PARK "停车"
